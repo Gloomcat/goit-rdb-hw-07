@@ -1,0 +1,11 @@
+USE mydb;
+
+SELECT id, YEAR(date) as year, MONTH(date) as month, DAY(date) as day, date FROM orders;
+
+SELECT id, date, DATE_ADD(date, INTERVAL 1 DAY) as date_plus_day FROM orders;
+
+SELECT id, date, UNIX_TIMESTAMP(date) as timestamp_seconds FROM orders;
+
+SELECT COUNT(*) as orders_in_date_bounds FROM orders WHERE date BETWEEN "1996-07-10 00:00:00" AND "1996-10-08 00:00:00";
+
+SELECT id, date, JSON_OBJECT('id', id, 'date', date) as json_id_date FROM orders;
